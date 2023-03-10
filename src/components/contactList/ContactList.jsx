@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import PropTypes from 'prop-types';
 
 const ContactList = ({ contacts, filter, remove }) => {
@@ -22,5 +23,6 @@ const ContactList = ({ contacts, filter, remove }) => {
 ContactList.propTypes = {
   contacts: PropTypes.array.isRequired,
   filter: PropTypes.string.isRequired,
+  remove: PropTypes.func.isRequired,
 };
 export default ContactList;
