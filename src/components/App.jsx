@@ -3,6 +3,8 @@ import ContactList from './contactList/ContactList';
 import Filter from './filter/Filter';
 import ContactForm from './form/ContactForm';
 import uniqid from 'uniqid';
+import css from './App.module.css';
+import Header from './header/Header';
 
 class App extends Component {
   state = {
@@ -38,18 +40,19 @@ class App extends Component {
   render() {
     const { filter, contacts } = this.state;
     return (
-      <div>
-        <h1>Phonebook</h1>
-        <ContactForm submit={this.handleSubmit} contacts={this.contacts} />
-
-        <h2>Contacts</h2>
-        <Filter filter={this.hendleSearch} />
-        <ContactList
-          contacts={contacts}
-          filter={filter}
-          remove={this.hendeleClickDelete}
-        />
-      </div>
+      <>
+        <Header title={'Phonebook'} />
+        <div className={css.container}>
+          <ContactForm submit={this.handleSubmit} contacts={this.contacts} />
+          <h2 className={css.title}>Contacts</h2>
+          <Filter filter={this.hendleSearch} />
+          <ContactList
+            contacts={contacts}
+            filter={filter}
+            remove={this.hendeleClickDelete}
+          />
+        </div>
+      </>
     );
   }
 }

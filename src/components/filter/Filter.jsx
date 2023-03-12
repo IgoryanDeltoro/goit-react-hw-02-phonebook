@@ -1,13 +1,17 @@
 import PropTypes from 'prop-types';
+import css from '../filter/Filter.module.css';
 const shortid = require('shortid');
 
 const Filter = ({ filter }) => {
   const filterID = shortid.generate();
 
   return (
-    <div>
-      <label htmlFor={filterID}>Find contacts by name</label>
+    <div className={css.container}>
+      <label className={css.label} htmlFor={filterID}>
+        Find contacts by name
+      </label>
       <input
+        className={css.input}
         type="text"
         name="name"
         id={filterID}
