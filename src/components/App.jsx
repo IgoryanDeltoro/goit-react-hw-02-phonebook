@@ -12,9 +12,24 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const storage = JSON.parse(localStorage.getItem('contacts'));
+    if (storage) {
+      this.setState(() => ({
+        contacts: [...storage],
+      }));
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  }
+
   handleSubmit = ({ name, number }) => {
     const ID = uniqid.process();
-    const string = this.state.contacts.filter(el => el.name === name);
+    const string = this.state.contacts.filter(
+      el => el.name.toLowerCase() === name.toLowerCase()
+    );
     string.length !== 0
       ? this.hendleCoincidence(name)
       : this.setState(({ contacts }) => ({
